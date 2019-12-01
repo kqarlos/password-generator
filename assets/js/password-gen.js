@@ -11,21 +11,11 @@ var numericChars = "0123456789";
 var specialChars = "!@#$%^&*()-=";
 var characters = [lowerCaseChars, upperCaseChars, numericChars, specialChars];
 var choices = [];
+var newPassword = "";
 
 function generatePassword() {
 
-    var newPassword = "";
-    do {
-        length = parseInt(prompt("How many characters"), 10);
-    } while (isNaN(length) || length < 8 || length > 128)
-
-    hasLowerCase = confirm("Would you like lower case characters?");
-    hasUpperCase = confirm("Would you like upper case characters?");
-    hasNumericChars = confirm("Would you like numeric characters?")
-    hasSpecialChars = confirm("Would you like special characters?");
-
-
-    console.log("Length: " + length + ", Lower case: " + hasLowerCase + ", Upper case: " + hasUpperCase + ", Numeric: " + hasNumericChars + ", Special: " + hasSpecialChars);
+    checkRequirements();
 
     if (hasLowerCase) {
         choices.push(0);
@@ -45,9 +35,29 @@ function generatePassword() {
     }
 
     passwordPointer.innerHTML = newPassword;
+    clear();
 }
 
 function copyToClipboard() {
 
+
+}
+
+function clear() {
+    choices = [];
+    newPassword = "";
+}
+
+function checkRequirements(){
+    do {
+        length = parseInt(prompt("How many characters"), 10);
+    } while (isNaN(length) || length < 8 || length > 128)
+
+    hasLowerCase = confirm("Would you like lower case characters?");
+    hasUpperCase = confirm("Would you like upper case characters?");
+    hasNumericChars = confirm("Would you like numeric characters?")
+    hasSpecialChars = confirm("Would you like special characters?");
+
+    console.log("Length: " + length + ", Lower case: " + hasLowerCase + ", Upper case: " + hasUpperCase + ", Numeric: " + hasNumericChars + ", Special: " + hasSpecialChars);
 
 }
