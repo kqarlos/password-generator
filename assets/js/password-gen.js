@@ -26,11 +26,10 @@ function generatePassword() {
     } if (hasSpecialChars) {
         choices.push(3);
     }
-    console.log("Choices: " + choices);
-    
+    // console.log("Choices: " + choices);
     for (var i = 0; i < length; i++) {
         var charArray = choices[Math.floor(Math.random() * choices.length)];
-        console.log("Chosen array: " + charArray);
+        // console.log("Chosen array: " + charArray);
         newPassword += characters[charArray][Math.floor(Math.random() * characters[charArray].length)];
     }
 
@@ -38,9 +37,16 @@ function generatePassword() {
     clear();
 }
 
+// Creates input element with the password value
+// The input element is used to select the passwords and copy it to the clipboard
 function copyToClipboard() {
-
-
+    var genPass = document.createElement('input');
+    document.body.appendChild(genPass);
+    genPass.value = passwordPointer.innerText;
+    genPass.select();
+    genPass.setSelectionRange(0, 99999);
+    document.execCommand("copy", false);
+    genPass.remove();
 }
 
 function clear() {
@@ -48,7 +54,7 @@ function clear() {
     newPassword = "";
 }
 
-function checkRequirements(){
+function checkRequirements() {
     do {
         length = parseInt(prompt("How many characters"), 10);
     } while (isNaN(length) || length < 8 || length > 128)
@@ -58,6 +64,6 @@ function checkRequirements(){
     hasNumericChars = confirm("Would you like numeric characters?")
     hasSpecialChars = confirm("Would you like special characters?");
 
-    console.log("Length: " + length + ", Lower case: " + hasLowerCase + ", Upper case: " + hasUpperCase + ", Numeric: " + hasNumericChars + ", Special: " + hasSpecialChars);
+    // console.log("Length: " + length + ", Lower case: " + hasLowerCase + ", Upper case: " + hasUpperCase + ", Numeric: " + hasNumericChars + ", Special: " + hasSpecialChars);
 
 }
