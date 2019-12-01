@@ -13,6 +13,12 @@ var characters = [lowerCaseChars, upperCaseChars, numericChars, specialChars];
 var choices = [];
 var newPassword = "";
 
+//Calls on checkrequirements() to set values to the requirements booleans
+//Based on the requirements pushes the desired indices of the arrays we can use from the characters array into the choices array
+//Generates the password by randomly chosing an index from the choices array. This index is used in the characters array to pick a
+//character array. Then a character is selected randomly from this array. This is reapeated according to the chosen length of the password
+//Password is displayed
+//Variables are cleared for future use.
 function generatePassword() {
 
     checkRequirements();
@@ -37,8 +43,8 @@ function generatePassword() {
     clear();
 }
 
-// Creates input element with the password value
-// The input element is used to select the passwords and copy it to the clipboard
+// Creates input element genPassword with the password value
+// The input element is used to select the password and copy it to the clipboard
 function copyToClipboard() {
     var genPass = document.createElement('input');
     document.body.appendChild(genPass);
