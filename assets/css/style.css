@@ -1,3 +1,4 @@
 .password {
     border: 1px dashed gray;
+    overflow-wrap: break-word;
 }
