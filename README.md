@@ -12,14 +12,49 @@ This application is compatible with the most commonly used web browsers
 
 ## Code Snippets
 
-This shows the function generatePassword(). This function calls on checkRequirements() to set values to the requirements booleans. Based on the requirements it pushes the desired indices of the arrays we can use from the characters array into the choices array. It generates the password by randomly chosing an index from the choices array. This index is used in the characters array to pick a character array. Then a character is selected randomly from this array. This is reapeated according to the chosen length of the password. Then, the password is displayed and variables are cleared for future use.
+generatePassword();
+* This shows the function generatePassword(). This function calls on checkRequirements() to set values to the requirements booleans. Based on the requirements it pushes the desired indices of the arrays we can use from the characters array into the choices array. It generates the password by randomly chosing an index from the choices array. This index is used in the characters array to pick a character array. Then a character is selected randomly from this array. This is reapeated according to the chosen length of the password. Then, the password is displayed and variables are cleared for future use.
 
-![Site](assets/images/snippet1.png)
+```html
+    function generatePassword() {
+        checkRequirements();
 
-This shows the function copyToClipboard(). This function crates an input element genPassword wit the password value. This element then is used to select the password value and execute a copy command on it. This effectively copies the password to the clipboard. 
+        if (hasLowerCase) {
+            choices.push(0);
+        } if (hasUpperCase) {
+            choices.push(1);
+        } if (hasNumericChars) {
+            choices.push(2);
+        } if (hasSpecialChars) {
+            choices.push(3);
+        }
+        // console.log("Choices: " + choices);
+        for (var i = 0; i < length; i++) {
+            var charArray = choices[Math.floor(Math.random() * choices.length)];
+            // console.log("Chosen array: " + charArray);
+            newPassword += characters[charArray][Math.floor(Math.random() * characters[charArray].length)];
+        }
 
-![Site](assets/images/snippet2.png)
+        passwordPointer.innerHTML = newPassword;
+        clear();
+    }
+```
 
+copyToClipboard();
+
+* This shows the function copyToClipboard(). This function crates an input element genPassword wit the password value. This element then is used to select the password value and execute a copy command on it. This effectively copies the password to the clipboard. 
+
+```html
+    function copyToClipboard() {
+        var genPass = document.createElement('input');
+        document.body.appendChild(genPass);
+        genPass.value = passwordPointer.innerText;
+        genPass.select();
+        genPass.setSelectionRange(0, 99999);
+        document.execCommand("copy", false);
+        genPass.remove();
+    }
+```
 
 ## Built With
 
