@@ -53,6 +53,7 @@ function copyToClipboard() {
     genPass.setSelectionRange(0, 99999);
     document.execCommand("copy", false);
     genPass.remove();
+    alert("Password copied to clipboard!");
 }
 
 function clear() {

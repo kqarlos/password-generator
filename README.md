@@ -42,7 +42,7 @@ generatePassword();
 
 copyToClipboard();
 
-* This shows the function copyToClipboard(). This function crates an input element genPassword wit the password value. This element then is used to select the password value and execute a copy command on it. This effectively copies the password to the clipboard. 
+* This shows the function copyToClipboard(). This function creates an input element genPassword wit the password value. This element then is used to select the password value and execute a copy command on it. This effectively copies the password to the clipboard. 
 
 ```html
     function copyToClipboard() {
@@ -53,6 +53,7 @@ copyToClipboard();
         genPass.setSelectionRange(0, 99999);
         document.execCommand("copy", false);
         genPass.remove();
+        alert("Password copied to clipboard!");
     }
 ```
 
