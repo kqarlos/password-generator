@@ -1,12 +1,17 @@
-# Password Generator
+# Password Generator 🔑
 
-  ![Languages](https://img.shields.io/github/languages/count/kqarlos/password-generator)
-  ![Top Language](https://img.shields.io/github/languages/top/kqarlos/password-generator)
-  ![Code Size](https://img.shields.io/github/languages/code-size/kqarlos/password-generator)
-  ![Repo Size](https://img.shields.io/github/repo-size/kqarlos/password-generator)
-  ![Total Lines](https://img.shields.io/tokei/lines/github/kqarlos/password-generator)
-  ![Last Commit](https://img.shields.io/github/last-commit/kqarlos/password-generator)
-  ![Followers](https://img.shields.io/github/followers/kqarlos?style=social)
+
+</br>
+<p align="center">
+    <img src="https://img.shields.io/github/languages/count/kqarlos/password-generator?style=for-the-badge" alt="Languages" />
+    <img src="https://img.shields.io/github/languages/top/kqarlos/password-generator?style=for-the-badge" alt="Top Language" />
+    <img src="https://img.shields.io/github/languages/code-size/kqarlos/password-generator?style=for-the-badge" alt="Code Size" />
+    <img src="https://img.shields.io/github/repo-size/kqarlos/password-generator?style=for-the-badge" alt="Repo Size" />   
+    <img src="https://img.shields.io/tokei/lines/github/kqarlos/password-generator?style=for-the-badge" alt="Total Lines" />   
+    <img src="https://img.shields.io/github/last-commit/kqarlos/password-generator?style=for-the-badge" alt="Last Commit" />  
+    <img src="https://img.shields.io/github/issues/kqarlos/password-generator?style=for-the-badge" alt="Issues" />  
+    <img src="https://img.shields.io/github/followers/kqarlos?style=social" alt="Followers" />  
+</p>
 
 
 ## Description
@@ -17,8 +22,6 @@ Passwords generator is a web application that generates a password between 8 and
 
 * [Installation](#installation)
 * [Usage](#usage)
-    * [Screenshots](#screenshots)
-    * [Snippets](#snippets)
 * [Credits](#credits)
 * [License](#license)
 
@@ -26,7 +29,9 @@ Passwords generator is a web application that generates a password between 8 and
 
 This application is compatible with the most commonly used web browsers
 
-* [See Live Site](https://kqarlos.github.io/password-generator/index.html)
+<p align="center">
+    <a href="https://kqarlos.github.io/password-generator/index.html"><img src="https://img.shields.io/badge/-👉 See Live Site-success?style=for-the-badge"  alt="Live Site" /></a>
+</p>
 
 ## Usage
 
@@ -92,10 +97,16 @@ copyToClipboard();
 
 ### Built With
 
-* [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
-* [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
-* [Bootstrap](https://getbootstrap.com/)
+<p align="center">
+    <a href="https://developer.mozilla.org/en-US/docs/Web/HTML"><img src="https://img.shields.io/badge/-HTML-orange?style=for-the-badge"  alt="HMTL" /></a>
+    <a href="https://developer.mozilla.org/en-US/docs/Web/CSS"><img src="https://img.shields.io/badge/-CSS-blue?style=for-the-badge" alt="CSS" /></a>
+    <a href="https://www.javascript.com/"><img src="https://img.shields.io/badge/-Javascript-yellow?style=for-the-badge" alt="Javascript" /></a>
+    <a href="https://getbootstrap.com/"><img src="https://img.shields.io/badge/-Bootstrap-blueviolet?style=for-the-badge" alt="Bootstrap" /></a>
+</p>
+</br>
 
 ## License
 
-![GitHub](https://img.shields.io/github/license/kqarlos/password-generator)
+<p align="center">
+    <img align="center" src="https://img.shields.io/github/license/kqarlos/password-generator?style=for-the-badge" alt="MIT license" />
+</p>
