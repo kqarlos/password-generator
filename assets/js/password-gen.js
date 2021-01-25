@@ -14,25 +14,27 @@ var newPassword = "";
 // This is reapeated according to the chosen length of the password
 //Variables are cleared for future use.
 function generatePassword() {
-
-    checkRequirements();
-    // Add to pool of char choices
-    if (options.hasLowerCase) {
-        choices += lowerCaseChars;
-    } if (options.hasUpperCase) {
-        choices += upperCaseChars;
-    } if (options.hasNumericChars) {
-        choices += numericChars;
-    } if (options.hasSpecialChars) {
-        choices += specialChars;
+    // Check user options. False if user cancels prompt
+    let check = checkRequirements();
+    if (check) {
+         // Add to pool of char choices
+        if (options.hasLowerCase) {
+            choices += lowerCaseChars;
+        } if (options.hasUpperCase) {
+            choices += upperCaseChars;
+        } if (options.hasNumericChars) {
+            choices += numericChars;
+        } if (options.hasSpecialChars) {
+            choices += specialChars;
+        }
+        for (var i = 0; i < options.length; i++) {
+            var char = choices[Math.floor(Math.random() * choices.length)];
+            newPassword += char;
+        }
+        //Password is displayed
+        passwordEl.innerHTML = newPassword;
+        clear();
     }
-    for (var i = 0; i < options.length; i++) {
-        var char = choices[Math.floor(Math.random() * choices.length)];
-        newPassword += char;
-    }
-    //Password is displayed
-    passwordEl.innerHTML = newPassword;
-    clear();
 }
 
 // Creates input element genPassword with the password value
@@ -52,16 +54,23 @@ function copyToClipboard() {
 function clear() {
     choices = "";
     newPassword = "";
+    options = {};
 }
 
-// Asks user for requirements
+// Asks user for requirements return false if user cancels
 function checkRequirements() {
+    // Ask user for password length until we receive a valid option or the user cancels
     do {
-        options.length = parseInt(prompt("How many characters"), 10);
-    } while (isNaN(length) || options.length < 8 || options.length > 128)
+        options.length = prompt("How many characters");
+        if (options.length == null) {
+            return false;
+        }
+        options.length = parseInt(options.length, 10);
+    } while (isNaN(options.length) || options.length < 8 || options.length > 128)
 
     options.hasLowerCase = confirm("Would you like lower case characters?");
     options.hasUpperCase = confirm("Would you like upper case characters?");
     options.hasNumericChars = confirm("Would you like numeric characters?")
     options.hasSpecialChars = confirm("Would you like special characters?");
+    return true;
 }
