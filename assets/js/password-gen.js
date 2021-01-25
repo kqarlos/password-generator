@@ -1,5 +1,5 @@
 
-var passwordPointer = document.getElementById("password");
+var passwordEl = document.getElementById("password");
 var options = {};
 var lowerCaseChars = "abcdefghijklmnopqrstuvwxyz";
 var upperCaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -9,15 +9,14 @@ var choices = "";
 var newPassword = "";
 
 //Calls on checkrequirements() to set values to the requirements booleans
-//Based on the requirements pushes the desired indices of the arrays we can use from the characters array into the choices array
-//Generates the password by randomly chosing an index from the choices array. This index is used in the characters array to pick a
-//character array. Then a character is selected randomly from this array. This is reapeated according to the chosen length of the password
-//Password is displayed
+//Based on the requirements pushes desired chars into pool choices
+//Generates the password by randomly chosing a char from a pool choices. 
+// This is reapeated according to the chosen length of the password
 //Variables are cleared for future use.
 function generatePassword() {
 
     checkRequirements();
-
+    // Add to pool of char choices
     if (options.hasLowerCase) {
         choices += lowerCaseChars;
     } if (options.hasUpperCase) {
@@ -31,8 +30,8 @@ function generatePassword() {
         var char = choices[Math.floor(Math.random() * choices.length)];
         newPassword += char;
     }
-
-    passwordPointer.innerHTML = newPassword;
+    //Password is displayed
+    passwordEl.innerHTML = newPassword;
     clear();
 }
 
@@ -41,7 +40,7 @@ function generatePassword() {
 function copyToClipboard() {
     var genPass = document.createElement('input');
     document.body.appendChild(genPass);
-    genPass.value = passwordPointer.innerText;
+    genPass.value = passwordEl.innerText;
     genPass.select();
     genPass.setSelectionRange(0, 99999);
     document.execCommand("copy", false);
@@ -49,11 +48,13 @@ function copyToClipboard() {
     alert("Password copied to clipboard!");
 }
 
+// Resets values
 function clear() {
     choices = "";
     newPassword = "";
 }
 
+// Asks user for requirements
 function checkRequirements() {
     do {
         options.length = parseInt(prompt("How many characters"), 10);
