@@ -1,16 +1,11 @@
 
 var passwordPointer = document.getElementById("password");
-var length;
-var hasSpecialChars;
-var hasNumericChars;
-var hasLowerCase;
-var hasUpperCase;
+var options = {};
 var lowerCaseChars = "abcdefghijklmnopqrstuvwxyz";
 var upperCaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var numericChars = "0123456789";
 var specialChars = "!@#$%^&*()-=";
-var characters = [lowerCaseChars, upperCaseChars, numericChars, specialChars];
-var choices = [];
+var choices = "";
 var newPassword = "";
 
 //Calls on checkrequirements() to set values to the requirements booleans
@@ -23,20 +18,18 @@ function generatePassword() {
 
     checkRequirements();
 
-    if (hasLowerCase) {
-        choices.push(0);
-    } if (hasUpperCase) {
-        choices.push(1);
-    } if (hasNumericChars) {
-        choices.push(2);
-    } if (hasSpecialChars) {
-        choices.push(3);
+    if (options.hasLowerCase) {
+        choices += lowerCaseChars;
+    } if (options.hasUpperCase) {
+        choices += upperCaseChars;
+    } if (options.hasNumericChars) {
+        choices += numericChars;
+    } if (options.hasSpecialChars) {
+        choices += specialChars;
     }
-    // console.log("Choices: " + choices);
-    for (var i = 0; i < length; i++) {
-        var charArray = choices[Math.floor(Math.random() * choices.length)];
-        // console.log("Chosen array: " + charArray);
-        newPassword += characters[charArray][Math.floor(Math.random() * characters[charArray].length)];
+    for (var i = 0; i < options.length; i++) {
+        var char = choices[Math.floor(Math.random() * choices.length)];
+        newPassword += char;
     }
 
     passwordPointer.innerHTML = newPassword;
@@ -57,20 +50,17 @@ function copyToClipboard() {
 }
 
 function clear() {
-    choices = [];
+    choices = "";
     newPassword = "";
 }
 
 function checkRequirements() {
     do {
-        length = parseInt(prompt("How many characters"), 10);
-    } while (isNaN(length) || length < 8 || length > 128)
+        options.length = parseInt(prompt("How many characters"), 10);
+    } while (isNaN(length) || options.length < 8 || options.length > 128)
 
-    hasLowerCase = confirm("Would you like lower case characters?");
-    hasUpperCase = confirm("Would you like upper case characters?");
-    hasNumericChars = confirm("Would you like numeric characters?")
-    hasSpecialChars = confirm("Would you like special characters?");
-
-    // console.log("Length: " + length + ", Lower case: " + hasLowerCase + ", Upper case: " + hasUpperCase + ", Numeric: " + hasNumericChars + ", Special: " + hasSpecialChars);
-
+    options.hasLowerCase = confirm("Would you like lower case characters?");
+    options.hasUpperCase = confirm("Would you like upper case characters?");
+    options.hasNumericChars = confirm("Would you like numeric characters?")
+    options.hasSpecialChars = confirm("Would you like special characters?");
 }
