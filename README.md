@@ -42,31 +42,31 @@ This application is compatible with the most commonly used web browsers
 ### Snippets
 
 generatePassword();
-* This shows the function generatePassword(). This function calls on checkRequirements() to set values to the requirements booleans. Based on the requirements it pushes the desired indices of the arrays we can use from the characters array into the choices array. It generates the password by randomly chosing an index from the choices array. This index is used in the characters array to pick a character array. Then a character is selected randomly from this array. This is reapeated according to the chosen length of the password. Then, the password is displayed and variables are cleared for future use.
+* This function calls on checkRequirements() to set values to the requirements booleans. It will be false if the user cancels the prompt. Based on the requirements it pushes the desired characters into a pool choices. It generates the password by randomly chosing a character from the choices pool and addidng it to the password. This is reapeated according to the chosen length of the password. Then, the password is displayed and variables are cleared for future use.
 
 ```javascript
 
     function generatePassword() {
-        checkRequirements();
-
-        if (hasLowerCase) {
-            choices.push(0);
-        } if (hasUpperCase) {
-            choices.push(1);
-        } if (hasNumericChars) {
-            choices.push(2);
-        } if (hasSpecialChars) {
-            choices.push(3);
+        let check = checkRequirements();
+        if (check) {
+            // Add to pool of char choices
+            if (options.hasLowerCase) {
+                choices += lowerCaseChars;
+            } if (options.hasUpperCase) {
+                choices += upperCaseChars;
+            } if (options.hasNumericChars) {
+                choices += numericChars;
+            } if (options.hasSpecialChars) {
+                choices += specialChars;
+            }
+            for (var i = 0; i < options.length; i++) {
+                var char = choices[Math.floor(Math.random() * choices.length)];
+                newPassword += char;
+            }
+            //display password
+            passwordEl.innerHTML = newPassword;
+            clear();
         }
-        // console.log("Choices: " + choices);
-        for (var i = 0; i < length; i++) {
-            var charArray = choices[Math.floor(Math.random() * choices.length)];
-            // console.log("Chosen array: " + charArray);
-            newPassword += characters[charArray][Math.floor(Math.random() * characters[charArray].length)];
-        }
-
-        passwordPointer.innerHTML = newPassword;
-        clear();
     }
 ```
 
